@@ -39,6 +39,7 @@ router.post("/signup", (req, res) => {
     const profilepic = res.req.file.path;
 
     const newuser = new User({ name, email, password, profilepic });
+    console.log("user details are", newuser);
     newuser.save().then((result) => {
       const userpost = new Userpost({ owner: result._id });
       userpost.save().then(() => {
